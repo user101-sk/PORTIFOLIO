@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio do Artista</title>
+    <!-- Link para o arquivo CSS que define o estilo da página -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Importação da fonte Poppins do Google Fonts para um visual moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para ícones (usado para o ícone do hambúrguer) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<a href="../index.html" class="floating-button">
+    Voltar
+</a>
+<style>/* Estilo para o Botão Flutuante */
+.floating-button {
+    /* Posição fixa na tela (sobrepõe tudo) */
+    position: fixed;
+    bottom: 20px; /* Distância da parte inferior da tela */
+    right: 20px;  /* Distância da parte direita da tela */
+
+    /* Aparência do botão */
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white; /* Cor do texto */
+    padding: 15px 25px; /* Espaçamento interno */
+    border-radius: 50px; /* Bordas bem arredondadas (estilo "pílula") */
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-weight: bold; /* Deixa o texto em negrito */
+    font-size: 1em; /* Tamanho da fonte */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transição suave */
+    z-index: 1000; /* Garante que o botão fique acima de todo o conteúdo */
+}
+
+/* Efeito ao passar o mouse */
+.floating-button:hover {
+    background-color: #0056b3; /* Cor mais escura no hover */
+    transform: translateY(-2px); /* Efeito de "levantar" */
+}</style>
+    <!-- Cabeçalho com o menu de navegação fixo no topo -->
+    <header>
+        <nav class="menu">
+            <!-- Links do menu que levam para as seções da página (menu desktop) -->
+            <a href="#inicio" class="menu-item active">Início</a>
+            <a href="#sobre" class="menu-item">Sobre</a>
+            <a href="#galeria" class="menu-item">Galeria</a>
+            <a href="#apoie" class="menu-item">Apoie</a>
+        </nav>
+
+        <!-- Botão do menu hambúrguer para dispositivos móveis -->
+        <button class="hamburger-menu" aria-label="Abrir Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Menu lateral para dispositivos móveis (inicialmente escondido) -->
+        <nav class="mobile-menu">
+            <button class="close-mobile-menu" aria-label="Fechar Menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- Links do menu móvel, duplicados do menu desktop -->
+            <a href="#inicio" class="mobile-menu-item active">Início</a>
+            <a href="#sobre" class="mobile-menu-item">Sobre</a>
+            <a href="#galeria" class="mobile-menu-item">Galeria</a>
+            <a href="#apoie" class="mobile-menu-item">Apoie</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal da página, dividido em seções -->
+    <main>
+        <!-- Seção de Início/Capa -->
+        <section id="inicio" class="secao secao-inicio">
+            <div class="container">
+                <!-- Elementos com animação de fade-in e slide-up -->
+                <h1 class="animate-on-scroll" data-animation="fade-in">Nome</h1>
+                <p class="animate-on-scroll" data-animation="slide-up">Sua arte, sua paixão, sua história.</p>
+            </div>
+        </section>
+
+        <!-- Seção Sobre o Artista -->
+        <section id="sobre" class="secao">
+            <div class="container">
+                <h2 class="animate-on-scroll" data-animation="fade-in">Sobre Mim</h2>
+                <div class="sobre-conteudo animate-on-scroll" data-animation="slide-up">
+                    <!-- Imagem placeholder do artista. Substitua pela sua foto! -->
+                    <img src="https://placehold.co/400x400/cccccc/333333?text=Foto" alt="Foto do Artista" class="img-redonda animate-on-scroll" data-animation="fade-in-left">
+                    <div class="sobre-texto animate-on-scroll" data-animation="fade-in-right">
+                        <p>Olá! Sou [Seu Nome], um artista apaixonado por [sua área da arte, ex: pintura, escultura, fotografia]. Minha jornada artística começou em [ano ou período], e desde então, busco expressar [temas ou sentimentos que sua arte aborda, ex: a beleza da natureza, a complexidade das emoções humanas] através das minhas criações.</p>
+                        <p>Acredito que a arte tem o poder de [impacto da sua arte, ex: transformar, inspirar, provocar reflexão]. Cada obra é um pedaço da minha alma, um convite para você mergulhar no meu universo criativo. Espero que você encontre algo que ressoe com você aqui.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção da Galeria de Obras -->
+        <section id="galeria" class="secao">
+            <div class="container">
+                <h2 class="animate-on-scroll" data-animation="fade-in">Minha Galeria</h2>
+                <div class="galeria-grid">
+                    <!-- Imagens placeholder das obras. Cada uma com sua própria animação -->
+                    <img src="https://placehold.co/400x400/aaddff/333333?text=Obra+1" alt="Obra de Arte 1" class="img-galeria animate-on-scroll" data-animation="zoom-in">
+                    <img src="https://placehold.co/400x400/ffccaa/333333?text=Obra+2" alt="Obra de Arte 2" class="img-galeria animate-on-scroll" data-animation="zoom-in" data-delay="100">
+                    <img src="https://placehold.co/400x400/ccffaa/333333?text=Obra+3" alt="Obra de Arte 3" class="img-galeria animate-on-scroll" data-animation="zoom-in" data-delay="200">
+                    <img src="https://placehold.co/400x400/ffaaee/333333?text=Obra+4" alt="Obra de Arte 4" class="img-galeria animate-on-scroll" data-animation="zoom-in" data-delay="300">
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Apoio (Apoia-se) -->
+<section id="apoie" class="secao secao-apoie">
+    <div class="container2">
+        <div class="apoie-content">
+            <h2 class="animate-on-scroll" data-animation="fade-in">Apoie</h2>
+            <p class="animate-on-scroll" data-animation="slide-up">Se você aprecia meu trabalho e quer me ajudar a continuar criando, considere me apoiar!</p>
+            <p class="apoie-info animate-on-scroll" data-animation="fade-in" data-delay="200">Seu apoio faz toda a diferença para que eu possa dedicar mais tempo e recursos à minha arte.</p>
+        </div>
+                
+        <div class="widget-fundrazr-wrapper" id="fundrazr-wrapper">
+            <script>(function() { var d = document, fr = d.createElement('script'); fr.type = 'text/javascript'; fr.async = true; fr.src = 'https://static.fundrazr.com/widgets/loader.js'; var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(fr, s);})();</script>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- Rodapé da página -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Nome. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <!-- Link para o arquivo JavaScript (colocado no final do body para melhor performance) -->
+    <script src="script.js"></script>
+
+</body>
+</html>

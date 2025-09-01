@@ -1,0 +1,534 @@
+/* Reset básico para remover margens e preenchimentos padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo para o elemento HTML e comportamento de rolagem suave */
+html {
+    scroll-behavior: smooth; /* Permite a rolagem suave ao clicar nos links do menu */
+    font-family: 'Poppins', sans-serif; /* Aplica a fonte Poppins a todo o documento */
+}
+
+/* Estilo para o corpo da página */
+body {
+    background-color: #f8f8f8; /* Cor de fundo suave */
+    color: #333; /* Cor do texto principal */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+}
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+/* Estilo para o container principal que centraliza o conteúdo */
+.container {
+    max-width: 1000px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o container na página */
+    padding: 0 20px; /* Espaçamento interno nas laterais */
+    align-items: center;
+}
+
+/*
+    Estilos para o contêiner de Apoio (principal)
+*/
+.container2 {
+    background-color: #f8f8f8;
+    padding: 40px 20px;       /* Ajustei o padding para ser mais consistente */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;        /* Aumentei a largura máxima para acomodar os dois lados */
+    margin: 40px auto;
+
+    /*
+        Propriedades Flexbox para alinhar conteúdo e widget
+    */
+    display: flex;             /* Transforma o container em um flex container */
+    flex-direction: row;       /* Por padrão, em PCs, os itens ficam lado a lado */
+    flex-wrap: wrap;           /* Permite que os itens quebrem a linha em telas menores */
+    justify-content: center;   /* Centraliza os itens horizontalmente quando quebram a linha */
+    align-items: flex-start;   /* Alinha os itens ao topo do container */
+    gap: 30px;                 /* Espaço entre o conteúdo de texto e o widget */
+}
+
+/* Estilos para o agrupamento do texto */
+.apoie-content {
+    flex: 1; /* Faz com que o conteúdo de texto ocupe o espaço disponível */
+    min-width: 300px; /* Largura mínima para o texto antes de quebrar a linha */
+    text-align: left; /* Alinha o texto à esquerda dentro do seu próprio bloco */
+}
+
+/* Título "Apoie" */
+.container2 h2 {
+    font-size: 2.8em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center; /* Mantém o título centralizado */
+}
+
+/* Parágrafos de texto */
+.container2 p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    /* max-width: 600px; REMOVIDO: o flex já vai controlar a largura do apoie-content */
+    /* margin-left: auto; REMOVIDO */
+    /* margin-right: auto; REMOVIDO */
+}
+
+/* Estilo específico para a informação de apoio */
+.container2 .apoie-info {
+    font-style: italic;
+    color: #777;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+/*
+    Estilos para o FundRazr Widget
+*/
+.widget-fundrazr-wrapper {
+    /* O flex vai posicionar este item */
+    margin-top: 0; /* Remove a margem superior que tinha antes */
+    min-width: 300px; /* Garante que o widget tenha sua largura mínima */
+    text-align: center; /* Centraliza o conteúdo dentro do wrapper do widget */
+}
+
+
+/* --- Menu de Navegação (Cabeçalho) --- */
+header {
+    background: #ffffff; /* Fundo branco para o cabeçalho */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra sutil para destacar o cabeçalho */
+    position: fixed; /* Fixa o cabeçalho no topo da tela */
+    width: 100%; /* Ocupa toda a largura */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Garante que o menu fique acima de outros elementos */
+    padding: 15px 0; /* Espaçamento interno superior e inferior */
+    display: flex;
+    justify-content: center; /* Centraliza os itens do menu */
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 30px; /* Espaçamento entre os itens do menu */
+}
+
+.menu-item {
+    color: #555; /* Cor do texto dos links */
+    text-decoration: none; /* Remove sublinhado dos links */
+    font-weight: 600; /* Negrito para os links */
+    padding: 8px 15px; /* Espaçamento interno para os links */
+    border-radius: 25px; /* Bordas arredondadas */
+    transition: all 0.3s ease; /* Transição suave para efeitos de hover */
+}
+
+.menu-item:hover {
+    color: #007bff; /* Cor azul ao passar o mouse */
+    background-color: #e9f5ff; /* Fundo azul claro ao passar o mouse */
+}
+
+.menu-item.active {
+    color: #ffffff; /* Cor branca para o item ativo */
+    background-color: #007bff; /* Fundo azul para o item ativo */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Sombra para o item ativo */
+}
+
+/* --- Botão Hambúrguer (Mobile) --- */
+.hamburger-menu {
+    display: none; /* Esconde o botão por padrão (visível apenas em mobile) */
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #333;
+    cursor: pointer;
+    position: absolute; /* Posiciona no canto superior direito */
+    right: 5vw;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001; /* Acima do menu desktop */
+}
+
+/* --- Menu Mobile (Lateral) --- */
+.mobile-menu {
+    display: none; /* Esconde o menu mobile por padrão */
+    position: fixed;
+    top: 0;
+    /* Ajuste aqui: A largura será 80% da largura da viewport (tela) */
+    width: 100%;
+    /* Ajuste aqui: Quando fechado, ele estará -80vw (80% da largura da tela) para fora */
+    right: -80vw; /* Começa fora da tela (escondido) */
+    max-width: 280px; /* Adiciona um limite máximo para não ficar gigante em tablets */
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding-top: 80px; /* Espaço para o botão de fechar */
+    transition: right 0.3s ease-in-out; /* Transição para deslizar */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.mobile-menu.is-open {
+    right: 0; /* Desliza para dentro da tela quando ativo */
+    display: flex; /* Mostra o menu quando ativo */
+}
+
+.mobile-menu-item {
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 20px;
+    width: 80%; /* Largura dos itens do menu */
+    text-align: center;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-item:hover {
+    background-color: #e9f5ff;
+    color: #007bff;
+}
+
+.mobile-menu-item.active {
+    background-color: #007bff;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.close-mobile-menu {
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+
+/* --- Estilos das Seções da Página --- */
+.secao {
+    padding: 100px 0; /* Espaçamento superior e inferior para cada seção */
+    text-align: center; /* Centraliza o texto dentro das seções */
+    min-height: 80vh; /* Altura mínima para cada seção */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center;
+}
+
+/* Ajuste de padding para a primeira seção para não ser coberta pelo menu fixo */
+.secao:first-of-type {
+    padding-top: 150px; /* Mais padding no topo para a primeira seção */
+}
+
+.secao h2 {
+    font-size: 3em; /* Tamanho da fonte para os títulos das seções */
+    margin-bottom: 40px; /* Espaçamento abaixo do título */
+    color: #222; /* Cor mais escura para os títulos */
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.secao h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #007bff; /* Linha azul abaixo do título */
+    border-radius: 2px;
+}
+
+/* --- Seção de Início/Capa --- */
+.secao-inicio {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/444444/ffffff?text=Fundo') no-repeat center center/cover;
+    color: #ffffff; /* Texto branco para contraste com o fundo escuro */
+    height: 100vh; /* Ocupa a altura total da tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra no texto para melhor legibilidade */
+}
+
+.secao-inicio h1 {
+    font-size: 5em; /* Tamanho grande para o nome do artista */
+    margin-bottom: 20px;
+}
+
+.secao-inicio p {
+    font-size: 1.8em; /* Tamanho para o slogan */
+    font-weight: 300;
+}
+
+/* --- Seção Sobre Mim --- */
+.sobre-conteudo {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
+    align-items: center;
+    gap: 40px; /* Espaçamento entre a imagem e o texto */
+    text-align: left; /* Alinha o texto à esquerda */
+    margin-top: 40px;
+}
+
+.sobre-conteudo img {
+    max-width: 400px; /* Largura máxima da imagem */
+    height: 400px; /* Altura fixa para ser quadrada */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 50%; /* Imagem redonda */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra para a imagem */
+    flex-shrink: 0; /* Impede que a imagem encolha */
+}
+
+.sobre-texto {
+    flex: 1; /* Permite que o texto ocupe o espaço restante */
+    min-width: 300px; /* Largura mínima para o texto */
+}
+
+.sobre-texto p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* --- Seção da Galeria --- */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Layout responsivo em grade */
+    gap: 25px; /* Espaçamento entre as imagens da galeria */
+    margin-top: 40px;
+}
+
+.img-galeria {
+    width: 100%; /* Ocupa 100% da largura da coluna */
+    height: 280px; /* Altura fixa para as imagens da galeria */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Sombra para as imagens */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para efeitos de hover */
+}
+
+.img-galeria:hover {
+    transform: translateY(-5px) scale(1.02); /* Efeito de levantar e aumentar no hover */
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* --- Seção de Apoio --- */
+.secao-apoie {
+    background-color: #eef7ff; /* Fundo azul claro para a seção de apoio */
+    padding: 80px 0;
+    border-radius: 15px; /* Bordas arredondadas para a seção */
+    margin: 60px auto; /* Margem para separar de outras seções */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.apoie-info {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* --- Rodapé --- */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    background: #333; /* Fundo escuro para o rodapé */
+    color: #fff; /* Texto branco no rodapé */
+    margin-top: 60px;
+    font-size: 0.9em;
+}
+
+/* --- Responsividade para Telas Menores (Celulares e Tablets) --- */
+@media (max-width: 768px) {
+    /* Esconde o menu desktop e mostra o botão hambúrguer */
+    .menu {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block; /* Mostra o botão hambúrguer */
+    }
+
+    /* Ajustes para o cabeçalho em mobile */
+    header {
+        justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+        padding-left: 0px; /* Adiciona padding à esquerda */
+    }
+
+    .secao {
+        padding: 80px 0; /* Reduz o padding das seções */
+    }
+
+    .secao:first-of-type {
+        padding-top: 120px; /* Ajusta o padding da primeira seção */
+    }
+
+    .secao h2 {
+        font-size: 2.2em; /* Reduz o tamanho dos títulos */
+        margin-bottom: 30px;
+    }
+
+    .secao-inicio h1 {
+        font-size: 3em; /* Reduz o tamanho do nome do artista na capa */
+    }
+
+    .secao-inicio p {
+        font-size: 1.2em; /* Reduz o tamanho do slogan */
+    }
+
+    .sobre-conteudo {
+        flex-direction: column; /* Empilha imagem e texto na seção "Sobre" */
+        text-align: center;
+    }
+
+    .sobre-conteudo img {
+        max-width: 250px; /* Reduz o tamanho da imagem do artista */
+        height: 250px; /* Mantém a proporção quadrada */
+    }
+
+    .galeria-grid {
+        grid-template-columns: 1fr; /* Uma coluna para a galeria em telas pequenas */
+    }
+
+    .img-galeria {
+        height: auto; /* Altura automática para as imagens da galeria */
+    }
+
+    .secao-apoie {
+        padding: 50px 20px; /* Reduz o padding da seção de apoio */
+    }
+
+    .botao-apoie {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .secao-inicio h1 {
+        font-size: 2.5em;
+    }
+    .secao-inicio p {
+        font-size: 1em;
+    }
+}
+
+/* --- Estilos para Animação ao Rolar (Scroll Animation) --- */
+
+/* Estado inicial (escondido) para todos os elementos que vão animar */
+.animate-on-scroll {
+    opacity: 0; /* Totalmente transparente */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transição suave para opacidade e transformação */
+    will-change: opacity, transform; /* Otimização para performance da animação */
+}
+
+/* Animação: Fade In (aparecer suavemente) */
+.animate-on-scroll[data-animation="fade-in"] {
+    transform: translateY(20px); /* Começa um pouco abaixo */
+}
+.animate-on-scroll[data-animation="fade-in"].is-visible {
+    opacity: 1;
+    transform: translateY(0); /* Desliza para a posição original */
+}
+
+/* Animação: Slide Up (deslizar para cima) */
+.animate-on-scroll[data-animation="slide-up"] {
+    transform: translateY(50px); /* Começa mais abaixo */
+}
+.animate-on-scroll[data-animation="slide-up"].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animação: Fade In Left (aparecer da esquerda) */
+.animate-on-scroll[data-animation="fade-in-left"] {
+    transform: translateX(-50px); /* Começa à esquerda */
+}
+.animate-on-scroll[data-animation="fade-in-left"].is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Animação: Fade In Right (aparecer da direita) */
+.animate-on-scroll[data-animation="fade-in-right"] {
+    transform: translateX(50px); /* Começa à direita */
+}
+.animate-on-scroll[data-animation="fade-in-right"].is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Animação: Zoom In (aparecer com zoom) */
+.animate-on-scroll[data-animation="zoom-in"] {
+    transform: scale(0.8); /* Começa menor */
+}
+.animate-on-scroll[data-animation="zoom-in"].is-visible {
+    opacity: 1;
+    transform: scale(1); /* Aumenta para o tamanho original */
+}
+
+/* Animação: Pop In (aparecer com um pequeno "salto") */
+.animate-on-scroll[data-animation="pop-in"] {
+    transform: scale(0.5); /* Começa bem menor */
+    opacity: 0;
+}
+.animate-on-scroll[data-animation="pop-in"].is-visible {
+    opacity: 1;
+    transform: scale(1); /* Aumenta para o tamanho original */
+    animation: popIn 0.6s ease-out forwards; /* Usa keyframes para o "salto" */
+}
+
+/* Keyframes para a animação Pop In */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.05); /* Pequeno overshoot */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/*
+    Media Queries para Responsividade
+    Ajusta os estilos para telas menores (celulares)
+*/
+@media (max-width: 768px) {
+    .container2 {
+        flex-direction: column; /* Em telas pequenas, os itens ficam um abaixo do outro */
+        padding: 40px 15px;
+        margin: 20px auto;
+        align-items: center; /* Centraliza os itens na coluna */
+    }
+
+    .apoie-content {
+        text-align: center; /* Centraliza o texto em mobile */
+        min-width: auto; /* Remove a largura mínima para que se ajuste */
+    }
+
+    .container2 h2 {
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
+
+    .container2 p {
+        font-size: 1em;
+    }
+
+}

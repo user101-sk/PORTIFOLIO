@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Landing Page de Exemplo</title>
+    <link rel="stylesheet" href="style-lp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<a href="../index.html" class="floating-button">
+    Voltar
+</a>
+<style>/* Estilo para o Botão Flutuante */
+.floating-button {
+    /* Posição fixa na tela (sobrepõe tudo) */
+    position: fixed;
+    bottom: 20px; /* Distância da parte inferior da tela */
+    right: 20px;  /* Distância da parte direita da tela */
+
+    /* Aparência do botão */
+    background-color: #007bff; /* Cor de fundo azul */
+    color: white; /* Cor do texto */
+    padding: 15px 25px; /* Espaçamento interno */
+    border-radius: 50px; /* Bordas bem arredondadas (estilo "pílula") */
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-weight: bold; /* Deixa o texto em negrito */
+    font-size: 1em; /* Tamanho da fonte */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transição suave */
+    z-index: 1000; /* Garante que o botão fique acima de todo o conteúdo */
+}
+
+/* Efeito ao passar o mouse */
+.floating-button:hover {
+    background-color: #0056b3; /* Cor mais escura no hover */
+    transform: translateY(-2px); /* Efeito de "levantar" */
+}</style>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Nome do Produto Incrível</h1>
+            <p>A solução perfeita para o seu problema. Descubra como podemos transformar sua vida!</p>
+            <a href="#features" class="cta-button">Saiba Mais</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="features" class="section-features">
+            <div class="container">
+                <h2>Funcionalidades Principais</h2>
+                <div class="feature-item">
+                    <div class="icon-placeholder"></div>
+                    <h3>Funcionalidade 1</h3>
+                    <p>Descrição detalhada da primeira funcionalidade. Fale sobre os benefícios para o usuário.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-placeholder"></div>
+                    <h3>Funcionalidade 2</h3>
+                    <p>Descrição da segunda funcionalidade. Mostre como ela é útil e fácil de usar.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-placeholder"></div>
+                    <h3>Funcionalidade 3</h3>
+                    <p>Descrição da terceira funcionalidade. Destaque um diferencial competitivo do produto.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-about">
+            <div class="container">
+                <h2>Sobre Nós</h2>
+                <p>Nossa missão é [sua missão]. Somos uma equipe dedicada a [sua área de atuação].</p>
+                <img src="https://via.placeholder.com/600x400" alt="Imagem da Equipe ou do Produto" class="about-image">
+            </div>
+        </section>
+
+        <section id="cta" class="section-cta">
+            <div class="container">
+                <h2>Pronto para Começar?</h2>
+                <p>Junte-se a milhares de usuários satisfeitos e transforme seu dia a dia.</p>
+                <a href="#" class="cta-button">Começar Agora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nome do Produto. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
