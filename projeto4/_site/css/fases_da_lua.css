@@ -1,0 +1,638 @@
+/* ===== RESET & BASE STYLES ===== */
+:root { 
+  --moon-size: 350px;
+  --hover-scale: 1.03;
+  --transition-speed: 0.3s;
+  --start-dist: 200%; 
+
+  /* Posições finais (target) e iniciais (start) para cada botão */
+  /* Botão 1: topo */
+  --b1-tx: 0;      --b1-ty: -230px;
+  --b1-sx: 0;      --b1-sy: calc(-1 * var(--start-dist));
+  /* Botão 2 */
+  --b2-tx: 112px;  --b2-ty: -182px;
+  --b2-sx: calc(var(--start-dist));  --b2-sy: calc(-1 * var(--start-dist));
+  /* Botão 3 */
+  --b3-tx: 230px;  --b3-ty: 0;
+  --b3-sx: calc(var(--start-dist));  --b3-sy: 0;
+  /* Botão 4 */
+  --b4-tx: 112px;  --b4-ty: 182px;
+  --b4-sx: calc(var(--start-dist));  --b4-sy: calc(var(--start-dist));
+  /* Botão 5 */
+  --b5-tx: 0;      --b5-ty: 230px;
+  --b5-sx: 0;      --b5-sy: var(--start-dist);
+  /* Botão 6 */
+  --b6-tx: -112px; --b6-ty: 182px;
+  --b6-sx: calc(-1 * var(--start-dist)); --b6-sy: calc(var(--start-dist));
+  /* Botão 7 */
+  --b7-tx: -230px; --b7-ty: 0;
+  --b7-sx: calc(-1 * var(--start-dist)); --b7-sy: 0;
+  /* Botão 8 */
+  --b8-tx: -112px; --b8-ty: -182px;
+  --b8-sx: calc(-1 * var(--start-dist)); --b8-sy: calc(-1 * var(--start-dist));
+}
+
+* {
+  font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 50%;
+    width: 100%;
+    background: #ff000000;
+    color: #fff;
+}
+
+body {
+    min-height: 150%;
+    display: flex;
+    flex-direction: column;
+background: url("/_site/img/2k_stars.jpg") no-repeat center center fixed;
+    color: #fff;
+    position: relative; 
+    background-size: cover;
+}
+.main-content {
+    flex: 1;
+    padding: 20px 0 1000px; 
+    position: relative; 
+}
+
+/* MOON CONTAINER */
+.moon-container {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  transition: transform var(--transition-speed) ease-in-out;
+  cursor: pointer;
+}
+
+.moon-container:hover {
+  transform: translateX(-50%) scale(var(--hover-scale));
+}
+
+/* MOON STYLE */
+.moon {
+  z-index: 2;
+  width: var(--moon-size);
+  height: var(--moon-size);
+  border-radius: 50%;
+  background: url("/_site/img/2k_moon.jpg") repeat-x;
+  background-size: auto 100%;
+  animation: earthRotate 200s linear infinite;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.2),
+    -5px 0 8px #bcbbbb inset,
+    15px 2px 25px #000 inset,
+    -24px -2px 34px rgba(180, 180, 180, 0.6) inset,
+    250px 0 44px rgba(0, 0, 0, 0.4) inset,
+    150px 0 38px rgba(0, 0, 0, 0.67) inset,
+    0 13px 25px rgb(0, 0, 0);
+}
+
+
+.moon-container:hover .moon {
+  transform: scale(1.05) rotateY(10deg);
+  transition: transform 0.5s ease;
+}
+
+/* MOON PHASES */
+.moon-phases {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+/* TOOLTIP personalizada */
+.moon-phases button {
+  position: absolute;
+  width: 40px; height: 40px;
+  font-size: 40px;
+  background: none; border: none;
+  cursor: pointer;
+  opacity: 0;
+  /* transforma pro ponto inicial usando as vars de cada botão */
+  transform: translate(-50%, -50%) translate(var(--sx), var(--sy));
+  transition: none;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.moon-phases button .tooltip {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-align: center;
+  padding: 4px 10px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 130%; /* acima do botão */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  z-index: 20;
+  pointer-events: none;
+}
+.moon-phases button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+#moon-description-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  text-align: center;
+  width: 80%;
+  pointer-events: none; /* Para não interferir nos cliques */
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 25px rgba(255, 255, 255, 0.2);
+  animation: fadeIn 0.5s ease;
+  z-index: 11;
+}
+#moon-description-overlay.hidden {
+  display: none;
+}
+
+/* Quando ativado, dispara a animação em sequência */
+.moon-container.show-phases .moon-phases button:nth-child(1) {
+  animation: fly-in 0.6s ease-out 0s forwards ;
+  --tx: var(--b1-tx); --ty: var(--b1-ty);
+  --sx: var(--b1-sx); --sy: var(--b1-sy);
+  filter: grayscale(1);
+}
+.moon-container.show-phases .moon-phases button:nth-child(2) {
+  animation: fly-in 0.6s ease-out 0.1s forwards;
+  --tx: var(--b2-tx); --ty: var(--b2-ty);
+  --sx: var(--b2-sx); --sy: var(--b2-sy);
+  filter: grayscale(1);
+}
+.moon-container.show-phases .moon-phases button:nth-child(3) {
+  animation: fly-in 0.6s ease-out 0.2s forwards;
+  --tx: var(--b3-tx); --ty: var(--b3-ty);
+  --sx: var(--b3-sx); --sy: var(--b3-sy);
+  filter: grayscale(1);
+}
+.moon-container.show-phases .moon-phases button:nth-child(4) {
+  animation: fly-in 0.6s ease-out 0.3s forwards;
+  --tx: var(--b4-tx); --ty: var(--b4-ty);
+  --sx: var(--b4-sx); --sy: var(--b4-sy);
+  filter: grayscale(1);
+}
+.moon-container.show-phases .moon-phases button:nth-child(5) {
+  animation: fly-in 0.6s ease-out 0.4s forwards;
+  --tx: var(--b5-tx); --ty: var(--b5-ty);
+  --sx: var(--b5-sx); --sy: var(--b5-sy);
+  filter: grayscale(1);
+}
+.moon-container.show-phases .moon-phases button:nth-child(6) {
+  animation: fly-in 0.6s ease-out 0.5s forwards;
+  --tx: var(--b6-tx); --ty: var(--b6-ty);
+  --sx: var(--b6-sx); --sy: var(--b6-sy);
+  filter: grayscale(1);
+}
+.moon-container.show-phases .moon-phases button:nth-child(7) {
+  animation: fly-in 0.6s ease-out 0.6s forwards;
+  --tx: var(--b7-tx); --ty: var(--b7-ty);
+  --sx: var(--b7-sx); --sy: var(--b7-sy);
+  filter: grayscale(1);
+}
+.moon-container.show-phases .moon-phases button:nth-child(8) {
+  animation: fly-in 0.6s ease-out 0.7s forwards;
+  --tx: var(--b8-tx); --ty: var(--b8-ty);
+  --sx: var(--b8-sx); --sy: var(--b8-sy);
+  filter: grayscale(1);
+}
+
+/* ===== FIM MOON CONTAINER ===== */
+/* ===== BARRA MENU SUPERIOR ===== */
+nav.menu-completo {display: flex; /* Mantém o menu visível inicialmente */
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.778);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;}
+.menu-completo ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.menu-completo ul li a {  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: all 0.3s;
+    line-height: 1.6;
+}
+
+
+.menu-completo .destaque {  
+  background:linear-gradient(90deg, #3c256e, #031154);
+  font-weight: bold;
+}
+
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-logo img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+    background: radial-gradient(
+    circle,
+    #0f2592 0%,
+    #7441e1 40%,
+    transparent 80%
+  );
+  box-shadow:
+    0 0 10px 1px rgba(255, 255, 255, 0.2),
+    0 0 10px 1px rgba(255, 255, 255, 0.3),
+    0 0 20px 1px rgba(255, 255, 255, 0.2);
+}
+
+.menu-completo ul a:hover {
+  background: linear-gradient(90deg, #031154, #3c256e);
+  color: #fff;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .menu-completo {
+    flex-direction: column;
+  }
+  
+
+}
+/* ===== FIM BARRA MENU superior  ===== */
+   /* ===== MENU FLUTUANTE ===== */
+        .menu-flutuante {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .menu-botao {
+            background: linear-gradient(90deg, #3c256e, #031154);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+        }
+
+        .menu-botao i {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-links {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: linear-gradient(10deg, #3c256e, #031154);
+            border-radius: 10px;
+            padding: 15px;
+            display: none;
+            min-width: 200px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+
+        .menu-links.mostrar {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .menu-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+  
+        .topo-pagina .menu-completo {
+            display: flex;
+        }
+
+        .topo-pagina .menu-flutuante {
+            opacity: 0;
+            pointer-events: none;
+        }
+/* ===== FIM BARRA MENU superior  ===== */
+/* === ESTILOS QUANDO A PÁGINA É ROLADA === */
+        .scrollado .menu-completo {
+            transform: translateY(-100%); 
+            opacity: 0;
+        }
+
+        .scrollado .menu-flutuante {
+            opacity: 1;
+            pointer-events: auto;
+        }
+/* === FIM DOESTILOS QUANDO A PÁGINA É ROLADA === */
+/* ===== FOOTER ===== */
+.site-footer {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 40px 0 0;
+    margin-top: auto; /* Isso empurra o footer para baixo */
+    width: 100%;
+}
+
+.footer-container {
+  max-width: 1400px !important;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.footer-section {
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  color: #f1c40f;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.footer-links li, .contact-info li {
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+.footer-links a, .contact-info a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover, .contact-info a:hover {
+  color: #f1c40f;
+}
+
+.contact-info i {
+  margin-right: 10px;
+  color: #f1c40f;
+  width: 20px;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-links a {
+  color: #ecf0f1;
+  background: #34495e;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.social-links a:hover {
+  background: #f1c40f;
+  color: #2c3e50;
+  transform: translateY(-3px);
+}
+.copyright {
+  background: #1a252f;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.legal-links {
+  margin-top: 10px;
+}
+
+.legal-links a {
+  color: #bdc3c7;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.legal-links a:hover {
+  color: #f1c40f;
+}
+/* ===== FIM FOOTER ===== */
+/* Responsivo */
+@media (max-width: 768px) {
+  .menu-completo {
+    flex-direction: column;
+  }
+  
+  .menu-completo ul {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+/* ANIMAÇOES */
+@keyframes fly-in {
+  to {
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty));
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+@keyframes earthRotate {
+  0% { background-position: 0 0; }
+  100% { background-position: 2000px 0; }
+}
+@keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+/* FIM DAS ANIMAÇOES */
+
+
+
+.containerg {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      color: #f1c40f;
+      text-shadow: 0 0 10px rgba(245, 243, 206, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      border-bottom: 2px solid #3c256e;
+      padding-bottom: 10px;
+      margin-top: 40px;
+      font-size: 1.8rem;
+    }
+
+    .card {
+      background: rgba(26, 41, 128, 0.7);
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px 0;
+      border: 1px solid #3c256e;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    /* Glossário em formato de tabela estilizada */
+    .glossary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .glossary-table th {
+      background: linear-gradient(90deg, #3c256e, #031154);
+      color: #f5f3ce;
+      padding: 15px;
+      text-align: left;
+      font-size: 1.1rem;
+    }
+
+    .glossary-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #3c256e;
+      vertical-align: top;
+    }
+
+    .glossary-table tr:nth-child(even) {
+      background: rgba(60, 37, 110, 0.3);
+    }
+
+    .glossary-table tr:hover {
+      background: rgba(102, 210, 255, 0.1);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .containerg {
+        padding: 15px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+    }
+    
+@media (max-width: 480px) {
+  .glossary-table {
+    font-size: 0.9rem;
+  }
+  .glossary-table td {
+    padding: 8px 10px;
+  }
+}
+    strong {
+      color: #a2d2ff;
+    }
+    
+    @media (max-width: 768px) {
+  :root {
+    --moon-size: 180px;
+    --start-dist: 100%; /* Distância menor para os botões em telas pequenas */
+
+    /* Botões mais próximos do centro */
+    --b1-ty: -120px;
+    --b2-tx: 80px;  --b2-ty: -100px;
+    --b3-tx: 130px; --b3-ty: 0;
+    --b4-tx: 80px;  --b4-ty: 100px;
+    --b5-ty: 120px;
+    --b6-tx: -80px; --b6-ty: 100px;
+    --b7-tx: -130px;
+    --b8-tx: -80px; --b8-ty: -100px;
+  }
+
+  .moon-container {
+    top: 20%;
+  }
+
+  .moon-phases button {
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+  }
+
+  #moon-description-overlay {
+    font-size: 1rem;
+    width: 90%;
+  }
+}

@@ -1,0 +1,230 @@
+/* Reset e estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Botão Flutuante --- */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-button:hover {
+    background-color: #555;
+}
+
+/* --- Cabeçalho e Menu --- */
+header {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-item {
+    color: #555;
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.menu-item:hover, .menu-item.active {
+    color: #000;
+    border-bottom: 2px solid #000;
+}
+
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    right: 5vw;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 999;
+    padding-top: 80px;
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.mobile-menu.is-open {
+    right: 0;
+}
+
+.mobile-menu .close-mobile-menu {
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #333;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.mobile-menu .mobile-menu-item {
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 20px;
+    width: 80%;
+    text-align: center;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu .mobile-menu-item:hover {
+    background-color: #e9ecef;
+    color: #000;
+}
+
+.mobile-menu .mobile-menu-item.active {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* --- Seções --- */
+.secao {
+    min-height: 80vh;
+    padding: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.secao-inicio-fotografo {
+    min-height: 100vh;
+    background: url('neko\ arc\ modelo\ 4.jpg') no-repeat center center/cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-foto {
+    background: rgba(0, 0, 0, 0.4); /* O último valor (0.4) controla a opacidade (0.0 = transparente, 1.0 = opaco) */
+    padding: 40px;
+    border-radius: 10px;
+}
+.secao-inicio-fotografo h1 {
+    font-size: 4em; /* Aumenta o tamanho da fonte */
+    font-weight: 700; /* Deixa o texto mais bold */
+    letter-spacing: 2px; /* Espaçamento entre as letras para um visual mais elegante */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adiciona uma sombra ao texto para destacá-lo ainda mais */
+}
+.secao h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.secao p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Galeria --- */
+.galeria-grid {
+    /* Define o número de colunas, permitindo um layout fluido */
+    columns: 3;
+    column-gap: 15px; /* Espaço entre as colunas */
+    margin-top: 40px;
+}
+
+.foto-card {
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #ddd; /* borda fina */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.foto-card:hover {
+    transform: scale(1.02);
+}
+
+/* Ajusta TODAS as imagens da galeria */
+.foto-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain; /* mantém a proporção sem cortar */
+}
+
+.foto-card {
+    /* Faz com que cada foto seja um bloco inseparável */
+    break-inside: avoid;
+    
+    /* Estilos existentes */
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin-bottom: 15px; /* Adiciona um espaçamento entre os cards */
+}

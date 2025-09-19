@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Fotografia</title>
+    <link rel="stylesheet" href="style-fotografo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<a href="../index.html" class="floating-button">Voltar</a>
+
+<header>
+    <nav class="menu">
+        <a href="#inicio" class="menu-item active">Início</a>
+        <a href="#galeria" class="menu-item">Galeria</a>
+        <a href="#sobre" class="menu-item">Sobre</a>
+        <a href="#contato" class="menu-item">Contato</a>
+    </nav>
+    <button class="hamburger-menu" aria-label="Abrir Menu"><i class="fas fa-bars"></i></button>
+    <nav class="mobile-menu">
+        <button class="close-mobile-menu" aria-label="Fechar Menu"><i class="fas fa-times"></i></button>
+        <a href="#inicio" class="mobile-menu-item active">Início</a>
+        <a href="#galeria" class="mobile-menu-item">Galeria</a>
+        <a href="#sobre" class="mobile-menu-item">Sobre</a>
+        <a href="#contato" class="mobile-menu-item">Contato</a>
+    </nav>
+</header>
+
+<main>
+    <section id="inicio" class="secao secao-inicio-fotografo">
+        <div class="container-foto">
+            <h1 class="animate-on-scroll" data-animation="fade-in">Capturando Momentos</h1>
+            <p class="animate-on-scroll" data-animation="slide-up">Um portfólio de fotografia por [Seu Nome]</p>
+        </div>
+    </section>
+
+    <section id="galeria" class="secao">
+        <div class="container">
+            <h2 class="animate-on-scroll" data-animation="fade-in">Minha Galeria</h2>
+            <div class="galeria-grid animate-on-scroll" data-animation="slide-up" data-delay="200">
+                 <div class="foto-card">
+                    <img src="neko-arc-modelo2.jpg" alt="Fotografia de paisagem">
+                </div>
+                 <div class="foto-card">
+                    <img src="modelo-arc.webp" alt="Fotografia de retrato">
+                </div>
+                 <div class="foto-card">
+                    <img src="neko-arc-modelo.jpg" alt="Fotografia urbana">
+                </div>
+                 <div class="foto-card">
+                    <img src="neko arc modelo 7.webp" alt="Fotografia de natureza">
+                </div>
+                 <div class="foto-card">
+                    <img src="neko arc modelo 6.webp" alt="Fotografia de animais">
+                </div>
+                 <div class="foto-card">
+                    <img src="neko arc modelo 9.jpg" alt="Fotografia de comida">
+                </div>
+                 <div class="foto-card">
+                    <img src="neko arc modelo 4.jpg" alt="Fotografia de retrato">
+                </div>
+                 <div class="foto-card">
+                    <img src="neko arc modelo 8.webp" alt="Fotografia de paisagem">
+                </div>
+                  <div class="foto-card">
+                    <img src="neko arc modelo 10.jpg" alt="Fotografia de paisagem">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="secao secao-sobre-fotografo">
+        <div class="container">
+            <h2 class="animate-on-scroll" data-animation="fade-in">Sobre Mim</h2>
+            <p class="animate-on-scroll" data-animation="slide-up">
+                Olá! Meu nome é [Seu Nome] e eu sou fotógrafo(a) com uma paixão por capturar a essência de cada momento. Minhas fotos buscam contar histórias e revelar a beleza escondida no dia a dia.
+            </p>
+            <p class="animate-on-scroll" data-animation="slide-up" data-delay="100">
+                Comecei a fotografar por hobby, mas a paixão se tornou uma busca por registrar emoções, paisagens e a vida urbana de forma única.
+            </p>
+        </div>
+    </section>
+
+    <section id="contato" class="secao secao-contato">
+        <div class="container">
+            <h2 class="animate-on-scroll" data-animation="fade-in">Entre em Contato</h2>
+            <p class="animate-on-scroll" data-animation="slide-up">
+                Para propostas de trabalho, parcerias ou apenas um bate-papo, você pode me encontrar nas redes sociais ou enviar um e-mail.
+            </p>
+            <div class="social-links animate-on-scroll" data-animation="fade-in" data-delay="200">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:seuemail@exemplo.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 [Seu Nome]. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
