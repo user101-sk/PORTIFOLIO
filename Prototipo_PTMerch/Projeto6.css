@@ -1,0 +1,601 @@
+/* =========================================
+   1. VARIÁVEIS DE CORES & TEMA
+   ========================================= */
+:root {
+  /* TEMA PADRÃO (DARK / PRETO E VERMELHO) 🔴⚫ */
+  --bg-body: #111111;       /* Preto absoluto */
+  --bg-card: #0a0a0a;       /* Cinza quase preto */
+  --bg-header: #050505;     /* Cabeçalho super escuro */
+  --bg-input: #171717;      /* Inputs chumbo */
+  --text-main: #EDEDED;     /* Branco off-white */
+  --text-muted: #A1A1AA;    /* Cinza neutro */
+  --border-color: rgba(255,255,255,0.08);
+  --border-hover: #DC2626;  /* Borda brilha em Vermelho no hover */
+  --primary: #DC2626;       /* Vermelho Principal */
+  --primary-gradient: linear-gradient(135deg, #DC2626, #991B1B); /* Vermelho para Vinho Escuro */
+  --shadow-color: rgba(0,0,0,0.9); /* Sombra bem escura */
+  --glass-bg: rgba(5, 5, 5, 0.98); /* Vidro preto */
+  --brands-bg: #979797;     
+  --nav-hover: rgba(255,255,255,0.08);
+}
+/* TEMA CLARO (LIGHT / VERMELHO) */
+body.light-theme {
+  --bg-body: #F3F4F6;       /* Cinza bem clarinho */
+  --bg-card: #FFFFFF;       /* Branco puro */
+  --bg-header: #FFFFFF;     /* Cabeçalho branco */
+  --bg-input: #E5E7EB;      /* Input cinza claro */
+  --text-main: #111827;     /* Texto quase preto */
+  --text-muted: #4B5563;    /* Texto cinza médio */
+  --border-color: rgba(0,0,0,0.1); /* Bordas sutis escuras */
+  --border-hover: #DC2626;  /* Vermelho ao passar o mouse */
+  --primary: #DC2626;       /* Vermelho CEX/Nintendo */
+  --primary-gradient: linear-gradient(135deg, #DC2626, #B91C1C);
+  --shadow-color: rgba(0,0,0,0.1);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --brands-bg: #a0a3a8;
+  --nav-hover: rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   2. RESET E GERAL
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-body);
+  color: var(--text-main);
+  transition: background 0.3s, color 0.3s;
+}
+
+.container { max-width: 1200px; margin: auto; padding: 0 24px; }
+h1, h2, h3, h4 { font-weight: 600; color: var(--text-main); }
+button { cursor: pointer; }
+
+/* =========================================
+   3. HEADER (ESTRUTURA & BUSCA)
+   ========================================= */
+.header-double {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg-header);
+  box-shadow: 0 4px 20px var(--shadow-color);
+  transition: background 0.3s;
+}
+
+.header-main { padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+.header-row { display: flex; align-items: center; gap: 40px; }
+
+/* Logo */
+.logo { text-decoration: none; color: var(--text-main); display: flex; gap: 12px; font-size: 20px; font-weight: 700; }
+
+/* Busca */
+.search-bar-wide { flex: 1; position: relative; max-width: 800px; }
+.search-bar-wide input {
+  width: 100%; padding: 12px 50px 12px 20px; border-radius: 8px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-input);
+  color: var(--text-main);
+  outline: none; transition: 0.3s;
+}
+.search-bar-wide input:focus {
+  background: var(--bg-card); border-color: var(--primary);
+}
+.search-btn-wide {
+  position: absolute; right: 5px; top: 5px; bottom: 5px; width: 40px;
+  background: var(--primary); border: none; border-radius: 6px; color: white;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* =========================================
+   4. HEADER (ÍCONES E AÇÕES)
+   ========================================= */
+
+/* Container dos botões */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Estilo do Botão (Entrar / Cesto / Tema) */
+.icon-btn-label {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  
+  /* CONFIGURAÇÃO: ROW = Lado a lado | COLUMN = Texto embaixo */
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  gap: 8px;
+  
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+.icon-btn-label:hover { color: var(--primary); }
+
+/* Caixinha que segura o Ícone + Bolinha Vermelha */
+.icon-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* A Bolinha Vermelha do Carrinho */
+.cart-count {
+  position: absolute;
+  top: -8px;   /* Ajuste vertical */
+  right: -8px; /* Ajuste horizontal */
+  
+  background: #DC2626;
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-header);
+}
+
+/* =========================================
+   5. NAVEGAÇÃO & MEGA MENU
+   ========================================= */
+.header-nav-bar { background: rgba(0,0,0,0.03); height: 50px; display: flex; align-items: center; border-bottom: 1px solid var(--border-color); }
+.nav-links-row { display: flex; gap: 30px; height: 100%; align-items: center; }
+
+.nav-link-item {
+  color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 14px; text-transform: uppercase;
+  height: 50px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: 0.2s;
+}
+.nav-link-item:hover, .nav-link-item.active { color: var(--primary); border-bottom-color: var(--primary); }
+.nav-link-item.highlight { color: #F59E0B; }
+
+/* --- Mega Menu Flutuante --- */
+.nav-item.has-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+
+.mega-menu {
+  position: absolute; top: 100%; left: 0;
+  width: max-content; min-width: 200px; max-width: 90vw;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 0 16px 16px 16px; padding: 24px;
+  box-shadow: 0 20px 40px var(--shadow-color); z-index: 200;
+  opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.2s ease;
+}
+.nav-item.has-dropdown:hover .mega-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.menu-grid { display: flex; gap: 40px; }
+.menu-column { min-width: 160px; }
+.menu-column h4 {
+  color: var(--text-main); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;
+}
+.menu-column > a {
+  display: block; color: var(--text-muted); padding: 6px 0; font-size: 14px; text-decoration: none; transition: 0.2s;
+}
+.menu-column > a:hover { color: var(--primary); transform: translateX(5px); }
+
+/* Grelha de Botões (Para menu Acessórios) */
+.links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; width: 100%; }
+.links-grid a {
+  background: var(--nav-hover); padding: 10px 12px; border-radius: 8px;
+  border: 1px solid var(--border-color); color: var(--text-main);
+  text-decoration: none; white-space: nowrap; display: block; font-size: 13px; text-align: center; transition: all 0.2s ease;
+}
+.links-grid a:hover {
+  background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-2px);
+}
+
+/* =========================================
+   6. BANNER / SLIDER (FULL BACKGROUND STYLE)
+   ========================================= */
+.promo-banner { 
+  position: relative; 
+  height: 450px; /* Aumentei um pouco a altura para mais impacto */
+  width: 96%; 
+  max-width: 1200px; 
+  margin: 30px auto; 
+  border-radius: 24px; 
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+  overflow: hidden; 
+  background: #000; /* Fundo preto de segurança */
+}
+
+.promo-slide { 
+  position: absolute; 
+  inset: 0; 
+  
+  /* Configuração da Imagem de Fundo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  display: flex; 
+  align-items: center; /* Centraliza verticalmente o texto */
+  padding: 0 80px; /* Espaço nas laterais */
+  
+  opacity: 0; 
+  transition: opacity 0.8s ease; /* Transição suave apenas na opacidade */
+}
+
+.promo-slide.active { 
+  opacity: 1; 
+  z-index: 2; 
+}
+
+/* OVERLAY: Sombra para o texto ficar legível em cima da imagem */
+.promo-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Gradiente: Preto forte na esquerda (onde está o texto) -> Transparente na direita */
+  background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+
+.promo-content { 
+  position: relative; 
+  z-index: 3; /* Texto fica acima da sombra */
+  max-width: 550px; 
+}
+
+.promo-content h2 { 
+  font-size: 56px; /* Título maior */
+  margin: 16px 0; 
+  color: white; 
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  line-height: 1.1;
+}
+
+.promo-content p { 
+  color: #e2e8f0; 
+  margin-bottom: 32px; 
+  font-size: 18px; 
+  font-weight: 500;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+/* Controles do Banner */
+.banner-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.1); 
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; 
+  font-size: 24px; 
+  width: 48px; height: 48px; 
+  border-radius: 50%; 
+  z-index: 10;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.banner-btn:hover { 
+  background: white; 
+  color: black; 
+}
+.banner-btn.prev { left: 24px; } 
+.banner-btn.next { right: 24px; }
+
+.banner-dots { 
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); 
+  display: flex; gap: 10px; z-index: 10; 
+}
+.dot { 
+  width: 12px; height: 12px; 
+  background: rgba(255,255,255,0.3); 
+  border-radius: 50%; 
+  cursor: pointer; 
+  transition: 0.3s;
+}
+.dot.active { background: var(--primary); transform: scale(1.2); }
+
+/* Ajuste Responsivo para o Banner Cheio */
+@media (max-width: 900px) {
+  .promo-banner { height: 500px; }
+  .promo-slide { padding: 0 30px; align-items: flex-end; padding-bottom: 60px; }
+  
+  /* No telemóvel, o gradiente vem de baixo para cima */
+  .promo-slide::before {
+    background: linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  }
+  
+  .promo-content { text-align: left; width: 100%; }
+  .promo-content h2 { font-size: 36px; }
+}
+
+/* =========================================
+   7. PRODUTOS & CARDS
+   ========================================= */
+.products { margin-top: 60px; }
+.product-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
+
+.product-card {
+  background: var(--bg-card); border-radius: 24px; padding: 24px; transition: 0.25s; position: relative; overflow: hidden; z-index: 1;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+.product-card h4 { color: var(--text-main); }
+.product-card p { color: var(--text-muted); }
+
+/* Hover no Card */
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 20px var(--shadow-color);
+}
+
+/* Efeito Foil (Brilho Holográfico) */
+.product-card::before {
+  content: "";
+  position: absolute; top: 0; left: -140%; width: 100%; height: 100%;
+  background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.1) 60%, transparent 80%);
+  transform: skewX(-25deg); z-index: 2; pointer-events: none; transition: 0s;
+}
+
+.product-img {
+  width: 100%;
+  height: 220px;          /* Altura fixa para todos ficarem iguais */
+  object-fit: contain;    /* IMPORTANTE: Garante que a carta/caixa não é cortada */
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 70%); /* Fundo sutil atrás da img */
+  border-radius: 12px;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); /* Sombra na imagem */
+}
+
+/* Efeito extra: Quando passas o mouse no card, a imagem sobe um pouco */
+.product-card:hover .product-img {
+  transform: scale(1.08) translateY(-5px);
+}
+
+/* Etiquetas (Badges) */
+.card-badge {
+  position: absolute; top: 15px; left: 15px; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: white; text-transform: uppercase; z-index: 5; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.card-badge.promo { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+.card-badge.new { background: linear-gradient(135deg, #10b981, #059669); }
+.card-badge.preorder { background: linear-gradient(135deg, #3B82F6, #9333EA); }
+
+/* =========================================
+   8. BOTÕES GERAIS
+   ========================================= */
+.btn-primary { background: var(--primary-gradient); border: none; color: white; padding: 10px 20px; border-radius: 14px; font-weight: 600; }
+.large { padding: 14px 32px; } 
+.small { padding: 8px 14px; font-size: 14px; }
+
+/* =========================================
+   9. MARCAS & RODAPÉ
+   ========================================= */
+.brands-section { padding: 15px 0; background: var(--brands-bg); border-bottom: 1px solid var(--border-color); margin-top: 60px; transition: background 0.3s;}
+.brands-grid { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; }
+.brand-logo { filter: none; width: 10%; transition: 0.4s; cursor: pointer; }
+.brand-logo:hover { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));}
+
+.footer { 
+  margin-top: 0; 
+  background: #101011; 
+  border-top: 1px solid rgba(255,255,255,0.05); 
+}
+
+.footer-grid { 
+  /* Reduzi o padding de 64px para 30px (menos altura no footer geral) */
+  padding: 20px 0; 
+  
+  display: grid; 
+  
+  /* Mudei de 200px para 140px. 
+     Isso permite que as colunas fiquem mais estreitas e próximas umas das outras. */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 0.2fr)); 
+  
+  /* Gap de 20px é suficiente para separar, sem afastar muito */
+  gap: 20px; 
+}
+
+.footer h4 { 
+  margin-bottom: 8px; /* Menos espaço abaixo do título */
+  color: white; 
+  font-size: 13px;    /* Título mais pequeno (antes era o padrão ~16px) */
+  text-transform: uppercase; /* Opcional: Ajuda na leitura em tamanhos pequenos */
+  letter-spacing: 0.5px;
+}
+
+.footer p { 
+  color: #9CA3AF; 
+  line-height: 1.4;   /* Linhas de texto mais coladas (antes 1.6) */
+  font-size: 12px;    /* Texto bem mais pequeno e discreto */
+}
+
+/* Link dentro do parágrafo (caso tenhas links no footer) */
+.footer p a {
+  color: #9CA3AF;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.footer p a:hover {
+  color: var(--primary);
+}
+
+/* =========================================
+   10. RESPONSIVIDADE (MOBILE / TABLET)
+   ========================================= */
+@media (max-width: 900px) {
+
+  /* 1. Cabeçalho */
+  .header-main { padding: 15px 0; }
+  .header-row { flex-wrap: wrap; gap: 15px; }
+  .logo { flex: 1; font-size: 18px; }
+  .header-actions { gap: 10px; }
+  .search-bar-wide { order: 3; min-width: 100%; margin-top: 5px; }
+
+  /* 2. Menu de Navegação (Scroll Horizontal) */
+  .header-nav-bar { height: auto; padding: 5px 0; overflow-x: auto; }
+  .nav-links-row {
+    width: 100%; overflow-x: auto; white-space: nowrap; padding: 0 20px; gap: 20px;
+    -ms-overflow-style: none; scrollbar-width: none;
+  }
+  .nav-links-row::-webkit-scrollbar { display: none; }
+  .nav-link-item { font-size: 13px; height: 40px; }
+  .mega-menu { display: none !important; }
+
+  /* 3. Banner */
+  .promo-banner { height: auto; min-height: 500px; }
+  .promo-slide, .promo-slide.wide, .promo-slide.super {
+    flex-direction: column-reverse; padding: 40px 20px; text-align: center; justify-content: center; gap: 20px;
+  }
+  .promo-content { max-width: 100% !important; z-index: 10; }
+  .promo-content h2 { font-size: 32px; margin: 10px 0; }
+  .promo-image img { max-height: 220px; transform: none !important; }
+  .banner-btn { width: 36px; height: 36px; font-size: 20px; top: 30%; }
+  .banner-btn.prev { left: 10px; }
+  .banner-btn.next { right: 10px; }
+
+  /* 4. Produtos */
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .product-card { padding: 15px; }
+  .img-placeholder { height: 120px; }
+  .btn-primary.small { width: 100%; margin-top: 10px; }
+  .product-footer { flex-direction: column; align-items: flex-start; gap: 5px; }
+
+  /* 5. Footer */
+  .brands-grid { gap: 20px; }
+  .brand-logo { height: 30px; }
+  .footer-grid { text-align: center; padding: 40px 0; }
+}
+
+/* Ajuste para celulares minúsculos */
+@media (max-width: 400px) {
+  .product-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   SEÇÃO DE EVENTOS (DESIGN PREMIUM)
+   ========================================= */
+
+.events {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.events h2 {
+  margin-bottom: 30px;
+  padding-left: 15px;
+  border-left: 5px solid var(--primary); /* Detalhe colorido ao lado do título */
+}
+
+/* A Grelha (2 Colunas no PC, 1 no Celular) */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* O Card do Evento */
+.event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  
+  display: flex; /* Alinha data e texto lado a lado */
+  align-items: center;
+  gap: 20px;
+  
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Efeito Hover: O Card levanta e a borda brilha */
+.event-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+/* A Caixa de Data (Quadrado na esquerda) */
+.event-date {
+  background: var(--nav-hover); /* Fundo sutil */
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  min-width: 70px;
+  height: 70px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  color: var(--primary); /* A data pega a cor do tema (Azul ou Vermelho) */
+  font-weight: 800;
+  line-height: 1;
+  transition: 0.3s;
+}
+
+/* Quando passa o mouse, a data fica cheia de cor */
+.event-card:hover .event-date {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.event-date .day { font-size: 24px; margin-bottom: 4px; }
+.event-date .suffix { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+
+/* Informações do Texto */
+.event-info {
+  flex: 1; /* Ocupa o espaço restante */
+}
+
+.event-info h4 {
+  color: var(--text-main);
+  font-size: 16px;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.event-info p {
+  color: var(--text-muted);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Espaço entre ícone e hora */
+}
+
+/* Setinha discreta na direita */
+.btn-icon-arrow {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 24px;
+  font-weight: 300;
+  padding-left: 10px;
+  transition: 0.3s;
+}
+
+.event-card:hover .btn-icon-arrow {
+  color: var(--primary); transform: translateX(5px);
+}
+
+/* =========================================
+   LOGO (IMAGEM PNG) 🖼️
+   ========================================= */
+
+.logo-img {
+  height: 90px;        /* Tamanho da altura (ajuste se achar pequeno) */
+  width: auto;         /* Largura automática para não esticar */
+  object-fit: contain; /* Garante que a imagem não corte */
+  
+  /* Opcional: Se seu logo for BRANCO e sumir no fundo claro, 
+     essa linha faz ele virar PRETO automaticamente no tema claro */
+  transition: filter 0.3s;
+}
