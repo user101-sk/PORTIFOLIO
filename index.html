@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    lin
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitor Augusto - Portfólio de Web Design</title>
@@ -14,41 +13,54 @@
 <body>
 
     <header>
+
         <nav class="container">
-            <h1 class="logo">Vitor Augusto</h1>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
+    <a href="#hero" class="logo">Vitor Augusto</a>
+    <ul style="align-items: center;">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#curriculo">Currículo</a></li> 
+        <li><a href="#contato">Contato</a></li>
+        <li>
+            <button id="theme-toggle" style="background: none; border: none; cursor: pointer; font-size: 1.2em; color: var(--text-color); margin-left: 15px;">
+                <i class="fas fa-moon"></i>
+            </button>
+        </li>
+    </ul>
+</nav>
     </header>
 
     <main>
         <section id="hero" class="hero-section">
             <div class="container hero-content">
                 <h2 class="animate-on-scroll fade-in">Vitor Augusto</h2>
-                <p class="animate-on-scroll slide-up">Desenvolvimento e Design Web Criativo</p>
-                <a href="#projetos" class="cta-button animate-on-scroll fade-in">Ver Projetos</a>
-            </div>
-        </section>
+                <p class="animate-on-scroll slide-up"> Desenvolvimento e Design Web </p>
 
+         <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+    <a href="#projetos" class="cta-button animate-on-scroll fade-in">Ver Projetos</a>
+    <a href="#curriculo" class="cta-button animate-on-scroll fade-in" style="background: transparent; border: 2px solid #fff; color: #fff;">Ver Currículo</a>
+    
+    
+</div>
+            </div>
+          
+ </section>
         <section id="sobre">
             <div class="container">
-                <h2 class="animate-on-scroll fade-in">Sobre Mim</h2>
-                <p class="animate-on-scroll slide-up">
+                <h2 class="animate-on-scroll slide-left">Sobre Mim</h2>
+                <p class="animate-on-scroll slide-right">
                     Olá! Meu nome é Vitor Augusto, e sou um desenvolvedor Full-Stack apaixonado por criar soluções web elegantes e funcionais. Minha paixão reside em transformar ideias complexas em interfaces de usuário intuitivas e experiências fluidas.
                 </p>
-                <div class="skills-grid animate-on-scroll fade-in">
+                <div class="skills-grid animate-on-scroll zoom-in">
                     <div class="skill-item">
                         <i class="fas fa-code"></i>
-                        <h3>Desenvolvimento</h3>
-                        <p>HTML, CSS, JavaScript, Node.js, Python.</p>
+                        <h3>Desenvolvimento Web</h3>
+                        <p>HTML5, CSS3, JavaScript, PHP, MySQL.</p>
                     </div>
                     <div class="skill-item">
                         <i class="fas fa-palette"></i>
-                        <h3>UI/UX Design</h3>
-                        <p>Figma, Adobe XD, princípios de usabilidade.</p>
+                        <h3>Suporte & Infraestrutura</h3>
+                        <p>Manutenção de Hardware, Redes, Sistemas Operativos, Troubleshooting</p>
                     </div>
                 </div>
             </div>
@@ -56,51 +68,150 @@
 
         <section id="projetos">
             <div class="container">
-                <h2 class="animate-on-scroll fade-in">Meus Projetos</h2>
+                <h2 class="animate-on-scroll slide-up">Meus Projetos</h2>
                 <div class="projetos-grid animate-on-scroll slide-up">
-                    <div class="projeto-card">
-                        <img src="https://via.placeholder.com/600x400/333333/FFFFFF?text=Projeto+1" alt="Screenshot do Projeto 1">
+
+                    <div class="projeto-card animate-on-scroll slide-up">
+                        <img src="_site/img/PAP-Proj-img.png" alt="Screenshot do Projeto 1">
                         <div class="card-content">
-                            <h3>Nome do Projeto 1</h3>
-                            <p>Descrição do projeto e tecnologias usadas (ex: HTML, CSS, JavaScript).</p>
-                            <a href="projeto1/projeto1.html">Ver Projeto</a>
+                            <h3>Sistema Web Full Stack (Live Climate-PAP)</h3>
+                            <p>Aplicação web completa desenvolvida como Prova de Aptidão Profissional. Front-end dinâmico e Back-end estruturado.</p>
+            <div class="tecnologias">
+                <span>HTML5</span>
+                <span>/CSS3</span>
+                <span>/JavaScript</span>
+                <span>/PHP</span>
+                <span>/MySQL</span>
+            </div>
+                            <a href="https://beta.vitoraugusto.pt/">Ver Projeto</a>
                         </div>
                     </div>
-                    <div class="projeto-card">
-                        <img src="https://via.placeholder.com/600x400/4CAF50/FFFFFF?text=Projeto+2" alt="Screenshot do Projeto 2">
+                    <div class="projeto-card animate-on-scroll slide-up">
+                        <img src="https://placehold.co/800x600/060092/ffffff?text=800x600" alt="Screenshot do Projeto 2">
                         <div class="card-content">
-                            <h3>Nome do Projeto 2</h3>
-                            <p>Descrição do projeto e tecnologias usadas (ex: React, Node.js).</p>
+                            <h3>Portfólio Responsivo</h3>
+                            <p>Design moderno focado em usabilidade, com adaptação perfeita e fluida para dispositivos móveis e desktops.</p>
+            <div class="tecnologias">
+                <span>HTML5</span>
+                <span>/CSS3</span>
+                <span>/JavaScript</span>
+            </div>
                             <a href="projeto2/PortifolioDoArtista.html">Ver Projeto</a>
                         </div>
                     </div>
-                    <div class="projeto-card">
-                        <img src="https://via.placeholder.com/600x400/FFC107/FFFFFF?text=Projeto+3" alt="Screenshot do Projeto 3">
+                    <div class="projeto-card animate-on-scroll slide-up">
+                        <img src="https://placehold.co/1000x800/06009C/ffffff?text=1000x800" alt="Screenshot do Projeto 3">
                         <div class="card-content">
-                            <h3>Nome do Projeto 3</h3>
-                            <p>Descrição do projeto e tecnologias usadas (ex: Python, Django).</p>
+                            <h3>Galeria Adaptativa</h3>
+                            <p>Galeria de imagens dinâmica que lê e se ajusta automaticamente de forma orgânica às diferentes proporções das fotografias.</p>
+            <div class="tecnologias">
+                <span>HTML5</span>
+                <span>/CSS3</span>
+                <span>/JavaScript</span>
+            </div>
                             <a href="projeto3/fotografo.html">Ver Projeto</a>
                         </div>
                     </div>
-                           <div class="projeto-card">
-                        <img src="https://via.placeholder.com/600x400/333333/FFFFFF?text=Projeto+1" alt="Screenshot do Projeto 1">
+                           <div class="projeto-card animate-on-scroll slide-up">
+                        <img src="https://placehold.co/100x80/0700A6/ffffff?text=100x80" alt="Screenshot do Projeto 1">
                         <div class="card-content">
-                            <h3>Nome do Projeto 4</h3>
-                            <p>Descrição do projeto e tecnologias usadas (ex: HTML, CSS, JavaScript).</p>
-                            <a href="projeto4/index.php">Ver Projeto</a>
+                            <h3>Showcase de Produtos</h3>
+                            <p>Website interativo desenhado para a exposição elegante, detalhada e atrativa de produtos comerciais (HTML, CSS, JavaScript).</p>
+            <div class="tecnologias">
+                <span>HTML5</span>
+                <span>/CSS3</span>
+                <span>/JavaScript</span>
+            </div>
+                            <a href="projeto1/projeto1.html">Ver Projeto</a>
                         </div>
                     </div>
-                    <div class="projeto-card">
-                        <img src="https://via.placeholder.com/600x400/333333/FFFFFF?text=Projeto+1" alt="Screenshot do Projeto 1">
+                     <div class="projeto-card animate-on-scroll slide-up">
+                        <img src="_site/img/chat-img.png" alt="Screenshot do Projeto 1">
                         <div class="card-content">
-                            <h3>Nome do Projeto 5</h3>   
-                            <p>Descrição do projeto e tecnologias usadas (ex: HTML, CSS, JavaScript).</p>
-                            <a href="projeto5/chat.html">Ver Projeto</a>
+                            <h3>Interface de Chat IA</h3>   
+                            <p>Desenvolvimento de uma interface conversacional ágil e responsiva para simulação e integração com Inteligência Artificial.</p>
+            <div class="tecnologias">
+                <span>HTML5</span>
+                <span>/CSS3</span>
+                <span>/JavaScript</span>
+            </div>
+                            <a href="projeto5/index.html">Ver Projeto</a>
+                        </div>
+                    </div>
+                         <div class="projeto-card animate-on-scroll slide-up">
+                        <img src="https://placehold.co/4000x4000/0800BA/ffffff?text=4000x4000" alt="Screenshot do Projeto 1">
+                        <div class="card-content">
+                            <h3>Protótipo de E-commerce</h3>   
+                            <p>Projeto de loja virtual focado na jornada do consumidor, desde a visualização dos produtos até à simulação do carrinho de compras.</p>
+            <div class="tecnologias">
+                <span>HTML5</span>
+                <span>/CSS3</span>
+                <span>/JavaScript</span>
+            </div>
+                            <a href="Prototipo_PTMerch/Prototipo_PTMerch.html">Ver Projeto</a>
+                        </div>
+                    </div>
+                    
+                    <div class="projeto-card animate-on-scroll slide-up">
+                        <img src="https://placehold.co/4000x4000/0800BA/ffffff?text=4000x4000" alt="Screenshot do Projeto 1">
+                        <div class="card-content">
+                            <h3>Quantum-Insights(Dashboard Estatístico Full Stack)</h3>
+                            <p>Painel de controlo desenvolvido para a Quantum, uma startup fictícia de análise de dados. O foco do projeto foi criar uma interface limpa com Glassmorphism para a visualização de métricas complexas e gráficos interativos.</p>
+            <div class="tecnologias">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+            </div>
+                            <a href="projeto7/projeto-quantum.html">Ver Projeto</a>
+                        </div>
+                    </div>
+
+                    <div class="projeto-card animate-on-scroll slide-up">
+                        <img src="https://placehold.co/4000x4000/0800BA/ffffff?text=4000x4000" alt="Screenshot do Projeto 1">
+                        <div class="card-content">
+                            <h3>Erro corrigir adaptador</h3>
+                            <p>EXemplo</p>
+            <div class="tecnologias">
+                <span>EXemplo</span>
+                <span>/EXemplo</span>
+                <span>/EXemplo</span>
+            </div>
+                            <a href="index.html">Ver Projeto</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+
+        <section id="curriculo">
+        <div class="container">
+        <h2 class="animate-on-scroll fade-in">Meu Currículo</h2>
+        
+<div class="animate-on-scroll slide-up" style="margin-bottom: 30px;">
+    <object 
+        data="vitorCV26_01_2026.pdf" 
+        type="application/pdf" 
+        width="100%" 
+        height="600px" 
+        style="border: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        
+        <div style="background-color: #f8d7da; color: #721c24; padding: 40px 20px; border-radius: 8px; border: 1px solid #f5c6cb; text-align: center;">
+            <i class="fas fa-exclamation-triangle" style="font-size: 3em; margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom: 10px;">Oops! Não foi possível carregar o documento.</h3>
+            <p>Parece que o ficheiro não foi encontrado ou o seu navegador não suporta a visualização direta de PDFs.</p>
+            <p style="margin-top: 15px;">Mas não se preocupe, pode usar o botão abaixo para baixar o currículo de forma segura!</p>
+        </div>
+
+    </object>
+</div>
+
+        <a href="vitorCV26_01_2026.pdf" download="Vitor_Augusto_CV.pdf" class="cta-button animate-on-scroll fade-in">
+            <i class="fas fa-file-download" style="margin-right: 8px;"></i> Baixar Currículo (PDF)
+        </a>
+    </div>
+        </section>
+
 
         <section id="contato">
             <div class="container">

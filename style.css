@@ -1,3 +1,26 @@
+/* --- Variáveis de Cores (O segredo do Dark Mode) --- */
+:root {
+    --bg-color: #f0f2f5;
+    --text-color: #333333;
+    --text-color2: #f0f2f5;
+    --header-bg: #ffffff;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0,0,0,0.1);
+    --accent-color: #2563eb; /* Azul moderno para dar destaque */
+    --accent-hover: #1d4ed8;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f0f2f5;
+    --text-color2: #f0f2f5;
+    --header-bg: #1e1e1e;
+    --card-bg: #2a2a2a;
+    --shadow-color: rgba(0,0,0,0.6);
+    --accent-color: #3b82f6; /* Azul um pouco mais claro para o modo escuro */
+    --accent-hover: #60a5fa;
+}
+
 /* --- Reset e Estilos Básicos --- */
 * {
     margin: 0;
@@ -5,12 +28,17 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -21,13 +49,14 @@ body {
 
 /* --- Cabeçalho e Navegação --- */
 header {
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: var(--header-bg);
+    box-shadow: 0 2px 10px var(--shadow-color);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
 header .container {
@@ -38,29 +67,38 @@ header .container {
 }
 
 .logo {
+    text-decoration: none;
     font-family: 'Playfair Display', serif;
     font-size: 1.5em;
     font-weight: 700;
-    color: #333;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;              /* Um efeito simples de brilho ao passar o rato */
 }
 
 header nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
+    align-items: center;
 }
 
 header nav ul li a {
-    color: #555;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 400;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
 header nav ul li a:hover {
-    color: #000;
-    border-bottom: 2px solid #000;
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 /* --- Seção de Apresentação (Hero Section) --- */
@@ -83,7 +121,7 @@ header nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7); /* Fundo mais escuro para o texto ler bem */
     z-index: -1;
 }
 
@@ -91,7 +129,6 @@ header nav ul li a:hover {
     font-family: 'Playfair Display', serif;
     font-size: 4em;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero-content p {
@@ -101,8 +138,9 @@ header nav ul li a:hover {
 }
 
 .cta-button {
-    background: #ffffff;
-    color: #333;
+    display: inline-block;
+    background: var(--accent-color);
+    color: #fff;
     padding: 15px 30px;
     border-radius: 50px;
     text-decoration: none;
@@ -112,7 +150,7 @@ header nav ul li a:hover {
 }
 
 .cta-button:hover {
-    background: #f0f0f0;
+    background: var(--accent-hover);
     transform: translateY(-3px);
 }
 
@@ -128,6 +166,7 @@ section h2 {
     margin-bottom: 50px;
     position: relative;
     display: inline-block;
+    color: var(--txt-color2);
 }
 
 section h2::after {
@@ -135,7 +174,7 @@ section h2::after {
     display: block;
     width: 60px;
     height: 3px;
-    background: #555;
+    background: var(--accent-color); /* Linha azul debaixo dos títulos */
     margin: 10px auto 0;
 }
 
@@ -148,12 +187,12 @@ section h2::after {
 }
 
 .skill-item {
-    background-color: #fff;
+    background-color: var(--card-bg);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px var(--shadow-color);
     width: 300px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .skill-item:hover {
@@ -162,11 +201,11 @@ section h2::after {
 
 .skill-item i {
     font-size: 3em;
-    color: #333;
+    color: var(--accent-color);
     margin-bottom: 15px;
 }
 
-/* --- Seção de Projetos --- */
+/* --- Seção de Projetos (COM ALTURA IGUALADA) --- */
 .projetos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -174,12 +213,15 @@ section h2::after {
 }
 
 .projeto-card {
-    background-color: #fff;
+    background-color: var(--card-bg);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s ease, background-color 0.3s ease;
     text-align: left;
+    display: flex;            /* Faz o cartão usar flexbox */
+    flex-direction: column;   /* Elementos em coluna */
+    height: 100%;             /* Força todos os cartões a preencherem o espaço vertical */
 }
 
 .projeto-card:hover {
@@ -195,25 +237,35 @@ section h2::after {
 
 .card-content {
     padding: 20px;
+    display: flex;            /* Transforma o conteúdo num container flex */
+    flex-direction: column;
+    flex-grow: 1;             /* Faz com que esta área cresça para preencher o cartão */
 }
 
 .card-content h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.card-content p {
+    margin-bottom: 20px;
 }
 
 .card-content a {
     display: inline-block;
-    background: #333;
+    background: var(--accent-color);
     color: #fff;
     padding: 8px 15px;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    margin-top: auto;         /* EMPURRA O BOTÃO SEMPRE PARA O FUNDO */
+    align-self: flex-start;   /* Evita que o botão ocupe a largura toda */
 }
 
 .card-content a:hover {
-    background: #555;
+    background: var(--accent-hover);
 }
 
 /* --- Seção de Contato --- */
@@ -223,13 +275,13 @@ section h2::after {
 
 .social-icon {
     font-size: 2em;
-    color: #333;
+    color: var(--text-color);
     margin: 0 15px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icon:hover {
-    color: #555;
+    color: var(--accent-color);
     transform: scale(1.1);
 }
 
@@ -257,6 +309,69 @@ section h2::after {
 footer {
     text-align: center;
     padding: 30px 0;
-    background: #333;
+    background: #111; /* Sempre escuro no rodapé fica mais elegante */
     color: #fff;
 }
+
+/* --- Responsividade (Mobile) --- */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    header nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero-content h2 {
+        font-size: 2.5em; 
+    }
+    .skills-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* --- Animações ao dar Scroll --- */
+
+/* Base: Elementos invisíveis e ligeiramente deslocados no início */
+.animate-on-scroll {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 1. Efeito Deslizar para Cima (Slide Up) */
+.slide-up {
+    transform: translateY(50px);
+}
+
+/* 2. Efeito Deslizar da Esquerda (Slide Left) */
+.slide-left {
+    transform: translateX(-50px);
+}
+
+/* 3. Efeito Deslizar da Direita (Slide Right) */
+.slide-right {
+    transform: translateX(50px);
+}
+
+/* 4. Efeito Zoom Suave (Zoom In) */
+.zoom-in {
+    transform: scale(0.9);
+}
+
+/* A Mágica: Quando o JavaScript percebe o elemento no ecrã, ele ativa esta classe */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* atraso em cascada de cada animacao*/
+.projetos-grid .projeto-card:nth-child(1){transition-delay: 0.1s;}
+.projetos-grid .projeto-card:nth-child(2){transition-delay: 0.2s;}
+.projetos-grid .projeto-card:nth-child(3){transition-delay: 0.3s;}
+.projetos-grid .projeto-card:nth-child(4){transition-delay: 0.4s;}
+.projetos-grid .projeto-card:nth-child(5){transition-delay: 0.5s;}
+.projetos-grid .projeto-card:nth-child(6){transition-delay: 0.6s;}

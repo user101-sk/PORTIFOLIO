@@ -378,51 +378,13 @@ button { cursor: pointer; }
 .brands-section { padding: 15px 0; background: var(--brands-bg); border-bottom: 1px solid var(--border-color); margin-top: 60px; transition: background 0.3s;}
 .brands-grid { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px; }
 .brand-logo { filter: none; width: 10%; transition: 0.4s; cursor: pointer; }
+
 .brand-logo:hover { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));}
 
-.footer { 
-  margin-top: 0; 
-  background: #101011; 
-  border-top: 1px solid rgba(255,255,255,0.05); 
-}
-
-.footer-grid { 
-  /* Reduzi o padding de 64px para 30px (menos altura no footer geral) */
-  padding: 20px 0; 
-  
-  display: grid; 
-  
-  /* Mudei de 200px para 140px. 
-     Isso permite que as colunas fiquem mais estreitas e próximas umas das outras. */
-  grid-template-columns: repeat(auto-fit, minmax(140px, 0.2fr)); 
-  
-  /* Gap de 20px é suficiente para separar, sem afastar muito */
-  gap: 20px; 
-}
-
-.footer h4 { 
-  margin-bottom: 8px; /* Menos espaço abaixo do título */
-  color: white; 
-  font-size: 13px;    /* Título mais pequeno (antes era o padrão ~16px) */
-  text-transform: uppercase; /* Opcional: Ajuda na leitura em tamanhos pequenos */
-  letter-spacing: 0.5px;
-}
-
-.footer p { 
-  color: #9CA3AF; 
-  line-height: 1.4;   /* Linhas de texto mais coladas (antes 1.6) */
-  font-size: 12px;    /* Texto bem mais pequeno e discreto */
-}
-
-/* Link dentro do parágrafo (caso tenhas links no footer) */
-.footer p a {
-  color: #9CA3AF;
-  text-decoration: none;
-  transition: 0.2s;
-}
-.footer p a:hover {
-  color: var(--primary);
-}
+.footer { margin-top: 0; background: #101011; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-grid { padding: 64px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+.footer h4 { margin-bottom: 12px; color: white; }
+.footer p { color: #9CA3AF; line-height: 1.6; }
 
 /* =========================================
    10. RESPONSIVIDADE (MOBILE / TABLET)

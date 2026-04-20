@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>PTMerch – UI Concept Dark</title>
 
-  <link rel="icon" type="image/png" href="iu_.png">
+<link rel="icon" type="image/png" href="iu_.png">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Projeto6.css">
+  <link rel="stylesheet" href="ODALMOOO.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
   <div class="header-main">
     <div class="container header-row">
       
-  <a href="Projeto6.html" class="logo">
+  <a href="Prototipo_PTMerch.html" class="logo">
     <img src="iu_.png" alt="Logo" class="logo-img"> 
   </a>
 
@@ -34,7 +34,7 @@
           <span>Entrar</span>
         </button>
 
-<a href="Package_Tracker.html" class="icon-btn-label cart-btn" style="text-decoration: none;">
+<a href="ODALMOOO.html" class="icon-btn-label cart-btn" style="text-decoration: none;">
   
   <div class="icon-box">
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -49,7 +49,6 @@
   <span>Cesto</span>
 
 </a>
-
         <button class="icon-btn-label" id="theme-toggle">
          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
          <span>Tema</span>
@@ -167,146 +166,117 @@
 
 </header>
 
-<!-- SLIDER / BANNER -->
+<div class="container account-wrapper">
 
-<section class="promo-banner">
+  <aside>
+    <div class="user-greeting">Olá, Marco</div>
+    <nav class="sidebar-menu">
+      <a href="#" class="menu-item active">
+        <span>📦 Compras</span> <span>›</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span>🔧 Serviços</span> <span>›</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span>💬 Mensagens</span> <span>›</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span>👤 Conta</span> <span>›</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span>❤️ Favoritos</span> <span>›</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span>🎫 Cupões</span> <span>›</span>
+      </a>
+      <a href="#" class="menu-item">
+        <span>🚪 Terminar Sessão</span> <span>›</span>
+      </a>
+    </nav>
+  </aside>
 
-  <div class="promo-slide active" style="background-image: url('https://placehold.co/1920x1080/3d0707/ffffff?text=Pokemon+151');">
- <span class="card-badge promo">-10% OFF</span>
-    <div class="promo-content">
-      <h2>Pokémon 151</h2>
-      <p>A coleção mais nostálgica de sempre.<br>Agarra já a tua Elite Trainer Box antes que esgote.</p>
-      <button class="btn-primary large">Ver Coleção</button>
-    </div>
-  </div>
+  <main>
+    <a href="#" class="back-link">← A Minha Conta</a>
 
-  <div class="promo-slide" style="background-image: url('https://placehold.co/1920x1080/2a1b0e/ffffff?text=Wallpaper+Magic+Fallout');">
-      <span class="card-badge new">Lançamento</span>
-    <div class="promo-content">
-      <h2>Magic: Fallout</h2>
-      <p>Sobrevive ao mundo pós-apocalíptico.<br>Decks de Commander já disponíveis em loja.</p>
-      <button class="btn-primary large">Comprar Decks</button>
-    </div>
-  </div>
-
-  <div class="promo-slide" style="background-image: url('https://placehold.co/1920x1080/1e293b/ffffff?text=Wallpaper+Dragon+Shield');">
-    <span class="card-badge preorder">Essenciais</span>
-    <div class="promo-content">
-      <h2>Proteção Máxima</h2>
-      <p>Dragon Shield, Deck Boxes e Sleeves.<br>Mantém as tuas cartas como novas para sempre.</p>
-      <button class="btn-primary large">Ver Acessórios</button>
-    </div>
-  </div>
-
-  <button class="banner-btn prev">‹</button>
-  <button class="banner-btn next">›</button>
-
-  <div class="banner-dots">
-    <span class="dot active" data-slide="0"></span>
-    <span class="dot" data-slide="1"></span>
-    <span class="dot" data-slide="2"></span>
-  </div>
-
-</section>
-
-<!-- PRODUTOS -->
-<section class="products container">
-  <h2>Produtos em Destaque</h2>
-
-  <div class="product-grid">
-
-    <div class="product-card">
-      <span class="card-badge preorder">Pré-venda</span>
-      
-      <img src="https://placehold.co/500x400/1e293b/ffffff?text=teste" alt="ETB Pokémon" class="product-img">
-      
-      <h4>Pokémon 151 ETB</h4>
-      <p>Elite Trainer Box - Scarlet & Violet</p>
-      <div class="product-footer">
-        <span class="price">€ 54,99</span>
-        <button class="btn-primary small">Adicionar</button>
+    <div class="order-summary-box">
+      <div class="summary-row">
+        <span>Encomenda Nº: <strong>82008696</strong></span>
+        <span class="total-val">Valor: € 54,99</span>
+      </div>
+      <div class="summary-row">
+        <span>Data da Compra: 30/01/2026</span>
+        <span>Local: Loja Online</span>
+      </div>
+      <div class="summary-row">
+        <span>Entrega: Domicílio</span>
       </div>
     </div>
 
-    <div class="product-card">
-      <span class="card-badge promo">-20% OFF</span>
+    <div class="shipping-section">
       
-      <img src="https://placehold.co/500x400/1e293b/ffffff?text=teste" alt="Booster Bundle" class="product-img">
-      
-      <h4>Paradox Rift Bundle</h4>
-      <p>Contém 6 Boosters Packs</p>
-      <div class="product-footer">
-        <span class="price">€ 22,90</span>
-        <button class="btn-primary small">Adicionar</button>
+      <div class="shipping-header">
+        <div>
+          <h3 style="margin-bottom: 5px;">Envio</h3>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            Vendido por: <strong style="color: var(--text-main); text-decoration: underline;">PTMERCH OFICIAL</strong>
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn-outline">CONTACTAR VENDEDOR</button>
+          <button class="btn-outline">CONFIRMAR RECEÇÃO</button>
+        </div>
       </div>
+
+      <div class="product-row-order">
+        <img src="https://placehold.co/500x400/1e293b/ffffff?text=teste" class="prod-thumb" alt="Produto">
+        <div style="flex: 1;">
+          <h4 style="font-size: 15px; margin-bottom: 5px;">Elite Trainer Box - Scarlet & Violet</h4>
+          <p style="font-size: 13px; color: var(--text-muted);">texto exemplo teste</p>
+        </div>
+        <div style="text-align: right;">
+          <p style="font-size: 13px; color: var(--text-muted);">Quantidade: 1x</p>
+          <p style="font-weight: 700; margin-top: 5px;">€ 54,99</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px;">
+        <h4 style="color: var(--primary); margin-bottom: 15px;">🚚 Segue aqui o teu envio</h4>
+
+        <div class="timeline-vertical">
+          
+          <div class="tl-item active">
+            <span class="tl-status">Encomendado</span>
+            <span class="tl-date">30/01/2026</span>
+          </div>
+
+          <div class="tl-item active">
+            <span class="tl-status">Pago</span>
+            <span class="tl-date">30/01/2026</span>
+          </div>
+
+          <div class="tl-item active">
+            <span class="tl-status">Aceite pelo vendedor</span>
+            <span class="tl-date">02/02/2026</span>
+          </div>
+
+          <div class="tl-item active">
+            <span class="tl-status">Expedido</span>
+            <span class="tl-date">02/02/2026</span>
+            <p style="font-size: 12px; color: var(--primary); margin-top: 5px;">Tracking: CJ915378062DE (DHL)</p>
+          </div>
+
+          <div class="tl-item pending">
+            <span class="tl-status">Entregue</span>
+            <span class="tl-date">--/--/----</span>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
-    <div class="product-card">
-      <span class="card-badge new">Novo</span>
-      
-      <img src="https://placehold.co/500x400/1e293b/ffffff?text=teste" alt="Carta Avulsa" class="product-img">
-      
-      <h4>Charizard ex (SIR)</h4>
-      <p>Obsidian Flames - Single Card</p>
-      <div class="product-footer">
-        <span class="price">€ 65,00</span>
-        <button class="btn-primary small">Adicionar</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      
-      <img src="https://placehold.co/500x400/1e293b/ffffff?text=teste" alt="Acessório" class="product-img">
-      
-      <h4>Deck Box Dragon Shield</h4>
-      <p>Matte Black - Capacidade 100+</p>
-      <div class="product-footer">
-        <span class="price">€ 8,50</span>
-        <button class="btn-primary small">Adicionar</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- EVENTOS -->
-<section class="events container">
-  <h2>Próximos Eventos</h2>
-
-  <div class="events-grid">
-
-    <div class="event-card">
-      <div class="event-date">
-        <span class="day">QI</span> <span class="suffix">Quinta</span>
-      </div>
-      <div class="event-info">
-        <h4>Masters League Pokémon</h4>
-        <p>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          19:30 – 22:00
-        </p>
-      </div>
-      <button class="btn-icon-arrow">›</button>
-    </div>
-
-    <div class="event-card">
-      <div class="event-date">
-        <span class="day">SX</span>
-        <span class="suffix">Sexta</span>
-      </div>
-      <div class="event-info">
-        <h4>Draft Magic: The Gathering</h4>
-        <p>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          19:30 – 23:00
-        </p>
-      </div>
-      <button class="btn-icon-arrow">›</button>
-    </div>
-
-  </div> </section>
-
-
+  </main>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -347,7 +317,7 @@
       <p>Instagram<br>Discord</p>
     </div>
   </div>
-    &copy; 2026 Vitor Augusto. Todos os direitos reservados.
+   &copy; 2026 Vitor Augusto. Todos os direitos reservados.
 </footer>
 
 
