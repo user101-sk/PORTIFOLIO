@@ -1,0 +1,179 @@
+:root {
+    /* --- Cores de Fundo --- */
+    --bg-dark-start: #0f172a;
+    --bg-dark-end: #1e1b4b;
+    --bg-dark-transparent: rgba(0, 0, 0, 0.4);
+    
+    /* --- Efeito Vidro (Glass) e Sombras --- */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border-light: rgba(255, 255, 255, 0.05);
+    --shadow-dark: rgba(0, 0, 0, 0.2);
+    
+    /* --- Cores de Texto --- */
+    --text-title: #ffffff;
+    --text-body: #cbd5e1;
+    --text-muted: #94a3b8;
+    
+    /* --- Cores de Destaque (Néon) --- */
+    --accent-cyan: #06b6d4;
+    --accent-cyan-glow: rgba(6, 182, 212, 0.3);
+    --accent-purple: #8b5cf6;
+    --accent-purple-light: rgba(139, 92, 246, 0.15);
+    --accent-purple-lighter: #a78bfa;
+}
+
+/* --- Estilos Base --- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--bg-dark-start) 0%, var(--bg-dark-end) 100%);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.esconder-inicio {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* --- O Logo Oficial --- */
+.logo-projeto {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+.logo-projeto span { 
+    color: var(--accent-purple); 
+}
+
+/* --- A Caixa Principal (Glassmorphism) --- */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: 0 10px 40px var(--shadow-dark);
+}
+
+/* --- Secção dos Gráficos --- */
+.dashboard-demo {
+    background: var(--bg-dark-transparent);
+    border: 1px solid var(--glass-border-light);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 40px 0;
+}
+
+.dashboard-demo h3 {
+    margin-top: 0;
+    color: var(--accent-purple);
+    margin-bottom: 30px;
+}
+
+.grafico-barras {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* Alinha as barras por baixo */
+    height: 250px; /* Altura do gráfico */
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.barra-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.barra {
+    width: 100%;
+    height: 0; /* Começa no zero para a animação */
+    background: linear-gradient(to top, var(--accent-cyan), var(--accent-purple)); /* Gradiente Néon */
+    border-radius: 6px 6px 0 0;
+    transition: height 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 0 15px var(--accent-cyan-glow); /* Brilho */
+}
+
+.barra-container span {
+    margin-top: 15px;
+    font-size: 0.85em;
+    color: var(--text-muted);
+}
+
+/* --- Textos e Layout --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+h1, h2 { color: var(--text-title); }
+
+p { 
+    line-height: 1.7; 
+    color: var(--text-body); 
+    font-size: 1.05em;
+}
+
+.descricao-destaque {
+    font-size: 1.25em; 
+    margin-top: 20px;
+}
+
+.tags-container {
+    margin-bottom: 30px;
+}
+
+.tag {
+    background: var(--accent-purple-light); /* Fundo roxo transparente */
+    color: var(--accent-purple-lighter);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .glass-panel { padding: 25px; }
+    .grafico-barras { height: 180px; }
+}
+
+    /* --- Bot���o Flutuante (Voltar) --- */
+    .floating-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #333;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9em;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+        z-index: 1000;
+    }
+    .floating-button:hover {
+        background-color: #555;
+    }

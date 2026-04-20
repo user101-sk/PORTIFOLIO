@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot IA</title>
+      <link rel="stylesheet" href="projeto5.css">
+</head>
+<body>
+  <a href="../index.html" class="floating-button">Voltar</a>
+
+  <div id="chat-box"></div>
+
+  <form id="chat-form">
+    <input type="text" id="msg" placeholder="Digite sua mensagem..." required>
+    <button type="submit">Enviar</button>
+  </form>
+
+<script>
+const form = document.getElementById("chat-form");
+const chatBox = document.getElementById("chat-box");
+const msgInput = document.getElementById("msg"); // Referência direta ao input
+let messageHistory = [];
+
+// Função para adicionar mensagem e rolar para baixo
+function appendMessage(role, content, isError = false) {
+    const className = role === "user" ? "user" : "bot";
+    const displayName = role === "user" ? "Você" : "Bot";
+    
+    // Otimização: Adiciona a classe de erro e o estilo inline se for erro
+    const errorStyle = isError ? ' style="color:red; background-color: #ffdddd;"' : '';
+    
+    chatBox.innerHTML += `<div class="msg ${className}"${errorStyle}><b>${displayName}:</b> ${content}</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const msg = msgInput.value.trim(); // Usa trim() para remover espaços
+    
+    if (!msg) return; // Não envia mensagem vazia
+
+    // 1. Exibe a mensagem do usuário e limpa o input
+    appendMessage("user", msg);
+    msgInput.value = "";
+    msgInput.disabled = true; // Desabilita o input durante o processamento
+    
+    messageHistory.push({ role: "user", content: msg });
+
+    try {
+        const res = await fetch("chat.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ messages: messageHistory })
+        });
+
+        // Verifica se a resposta HTTP foi bem-sucedida (status 200-299)
+        if (!res.ok) {
+             throw new Error(`Erro de rede ou servidor: Status ${res.status}`);
+        }
+
+        const data = await res.json();
+        const botReply = data.reply || "O bot não retornou uma resposta."; // Garante uma string de fallback
+
+        // 2. Exibe a resposta do bot e adiciona ao histórico
+        appendMessage("assistant", botReply);
+        messageHistory.push({ role: "assistant", content: botReply });
+
+    } catch (error) {
+        // 3. Exibe a mensagem de erro
+        appendMessage("assistant", `Erro: ${error.message}`, true);
+    } finally {
+        msgInput.disabled = false; // Reabilita o input
+        msgInput.focus(); // Coloca o foco de volta no input para digitar
+    }
+});
+</script>
+
+</body>
+</html>
